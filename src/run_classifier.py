@@ -7,6 +7,8 @@ import process_json
 import vectorization
 from sklearn.model_selection import train_test_split
 import classifier_perceptron
+import classifier_adaboost
+
 import read_csv
 import plot_basic_info_of_data
 import scipy
@@ -20,10 +22,13 @@ def main():
     Y = open_pickle("y_data.pickle")
     X_train, X_test, y_train, y_test = train_test_split(
         X, Y, test_size=0.3, random_state=101)
-    classifier_perceptron.Perceptron_Classifier1(X_train, y_train, X_test,
-                                                 y_test)
-    classifier_perceptron.Perceptron_Classifier2(X_train, y_train, X_test,
-                                                 y_test)
+    #classifier_perceptron.Perceptron_Classifier1(X_train, y_train, X_test, y_test)
+    #classifier_perceptron.Perceptron_Classifier2(X_train, y_train, X_test, y_test)
+    
+    #change these to modify the parameters for adaboost
+    estimators = 10
+    learning_rate = 1
+    classifier_adaboost.boost(estimators, learning_rate, X_train, y_train, X_test, y_test)
 
 
 def process_json_review_csv():
@@ -36,8 +41,7 @@ def process_json_review_csv():
     max_subset = 100000  # For testing, for actual classifier run we want this the num of reviews
     process_text_what = True  # Do we want to process text?
     prc_jsn = process_json.process_json()
-    prc_jsn.make_csv_from_Json(json_file, make_this_csv, fields, max_subset,
-                               process_text_what)
+    prc_jsn.make_csv_from_Json(json_file, make_this_csv, fields, max_subset, process_text_what)
 
 
 def process_vectorization():
