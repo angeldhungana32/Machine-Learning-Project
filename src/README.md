@@ -1,6 +1,6 @@
 # Read Me
 - What is this?
-    - It currently reads through the review.json file in Yelp-Dataset, only 10,000 reviews.
+    - It currently reads through the review.json file in Yelp-Dataset, only 100,000 reviews.
     - Makes a csv file of just reviews and its rating
     - Processes the reviews to get just significant words
         - Removes Punctuation, Digits, Stop Words and makes all words lower case
