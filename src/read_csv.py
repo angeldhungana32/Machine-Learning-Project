@@ -1,9 +1,3 @@
-'''
-    @author - Angel Dhungana
-    Read the csv file and get X and Y dataset
-'''
-
-
 def read_csv_file(file_name):
     '''
         Read the csv file and get X and Y

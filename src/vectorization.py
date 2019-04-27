@@ -1,5 +1,9 @@
+from sklearn.feature_extraction.text import CountVectorizer
+import numpy as np
+import read_csv
+import pandas as pd
+import pickle
 '''
-    @author - Angel Dhungan
     Vectorize the list of words in reviews along with their label, which in this case is rating 'Star'
     We will be using Bag of Words Process to Vectorize the words
         - This is the easiest way to vectorize words, count of words
@@ -12,30 +16,23 @@
         - The drawback is the it would create a large sparse matrix
         
 '''
-from sklearn.feature_extraction.text import CountVectorizer
-import numpy as np
-import read_csv
-import pandas as pd
-import pickle
 
 
 class Vectorization():
     def __init__(self):
         pass
 
-    def vectorize(self, X):
+    def vectorize(self, X, file_name):
         '''
             Read the csv file and get X and Y
                 X = Processed Reviews
                 Y = Rating 'Stars'
         '''
-        return self.bag_of_words(X)
-        # We can vectorize by using various other techniques as well
-        # We should consider this for final report
+        return self.bag_of_words(X, file_name)
 
-    def bag_of_words(self, X):
+    def bag_of_words(self, X, file_name):
         '''
             Vectorize X by counts using Bag of Words Method
         '''
         X = CountVectorizer().fit_transform(X)
-        pickle.dump(X, open("x_data.pickle", "wb"))
+        pickle.dump(X, open(file_name, "wb"))

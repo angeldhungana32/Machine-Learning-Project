@@ -1,15 +1,14 @@
-'''
-    @author - Angel Dhungana
-'''
 import matplotlib.pyplot as plt
 import read_csv
 import numpy as np
 
 
-def plt_info(Y):
+def plt_info(Y, file_name):
     '''
         Reads the dataset and plots graphs classifying negative and positive reviews
         Also, plots the graph of ratings
+
+        Only Plot the count of stars, no need to plot positive negative.
     '''
     dict_of_stars = {}
     for y_da in Y:
@@ -17,14 +16,14 @@ def plt_info(Y):
             dict_of_stars[y_da] += 1
         else:
             dict_of_stars[y_da] = 1
-    positive_reviews1, negative_reviews1 = get_pos_neg(dict_of_stars, False)
-    positive_reviews2, negative_reviews2 = get_pos_neg(dict_of_stars, True)
-    plt_pos_neg_no_3(positive_reviews1, negative_reviews1)
-    plt_pos_neg_3(positive_reviews2, negative_reviews2)
+    #positive_reviews1, negative_reviews1 = get_pos_neg(dict_of_stars, False)
+    #positive_reviews2, negative_reviews2 = get_pos_neg(dict_of_stars, True)
+    #plt_pos_neg_no_3(positive_reviews1, negative_reviews1)
+    #plt_pos_neg_3(positive_reviews2, negative_reviews2)
     plt_stars([
         dict_of_stars["1.0"], dict_of_stars["2.0"], dict_of_stars["3.0"],
         dict_of_stars["4.0"], dict_of_stars["5.0"]
-    ])
+    ], file_name)
 
 
 def get_pos_neg(dict_of_stars, is_three_positive):
@@ -51,7 +50,7 @@ def plt_pos_neg_no_3(pos, neg):
     txt = "Star 3 considered as negative"
     plt.figtext(
         0.5, 0.01, txt, wrap=True, horizontalalignment='center', fontsize=10)
-    plt.savefig('pos_neg_no_3.pdf', bbox_inches='tight')
+    plt.savefig('plots/pos_neg_no_3.pdf', bbox_inches='tight')
     plt.close()
 
 
@@ -70,11 +69,11 @@ def plt_pos_neg_3(pos, neg):
     txt = "Star 3 considered as positive"
     plt.figtext(
         0.5, 0.01, txt, wrap=True, horizontalalignment='center', fontsize=10)
-    plt.savefig('pos_neg_3.pdf', bbox_inches='tight')
+    plt.savefig('plots/pos_neg_3.pdf', bbox_inches='tight')
     plt.close()
 
 
-def plt_stars(stars):
+def plt_stars(stars, file_name):
     '''
         Plots the star ratings 
         Bar graph
@@ -89,5 +88,5 @@ def plt_stars(stars):
     plt.ylabel("Counts", fontsize=10)
     plt.xticks(index, label, fontsize=10, rotation=30)
     plt.title('Ratings Count')
-    plt.savefig('stars.pdf', bbox_inches='tight')
+    plt.savefig(file_name, bbox_inches='tight')
     plt.close()
