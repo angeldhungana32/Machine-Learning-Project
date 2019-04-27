@@ -22,7 +22,8 @@ def Logistic_Classifier_3_positive(X_train, y_train, X_test, y_test):
     print()
     print("Star Rating 3 considered as positive")
     print()
-    print('Perceptron Accuracy: %.2f' % accuracy_score(new_y_test1, y_pred))
+    print('Logistic Regression Accuracy: %.2f' % accuracy_score(
+        new_y_test1, y_pred))
     print()
     print('Classification Report:')
     print(classification_report(new_y_test1, y_pred))
@@ -54,7 +55,8 @@ def Logistic_Classifier_3_negative(X_train, y_train, X_test, y_test):
     print()
     print("Star Rating 3 considered as negative")
     print()
-    print('Perceptron Accuracy: %.2f' % accuracy_score(new_y_test2, y_pred))
+    print('Logistic Regression Accuracy: %.2f' % accuracy_score(
+        new_y_test2, y_pred))
     print()
     print('Classification Report:')
     print(classification_report(new_y_test2, y_pred))
