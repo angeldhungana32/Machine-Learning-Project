@@ -4,7 +4,7 @@ def read_csv_file(file_name):
     '''
     X = []
     Y = []
-    with open(file_name) as f:
+    with open(file_name, encoding='utf8') as f:
         for row in f:
             single_review = row.strip().split(",")
             X.append(single_review[0].strip())

@@ -7,6 +7,7 @@ import scipy
 import pickle
 # Import classifiers like this
 import classifiers.classifier_perceptron as Perceptron
+import classifiers.classifier_adaboost as Aboost
 '''
     Provide the Number of reviews you want, and then run the classifier you want
     Max Number of Reviews = 6,685,900
@@ -15,19 +16,22 @@ import classifiers.classifier_perceptron as Perceptron
 
 
 def main():
-    max_subset = 1000000
-    process_json_review_csv(max_subset)
+    max_subset = 10000
+    #process_json_review_csv(max_subset)
+    print('vectorizing')
     process_vectorization()
     X = open_pickle("subset_reviews/x_data.pickle")
     Y = open_pickle("subset_reviews/y_data.pickle")
+    print('split')
     X_train, X_test, y_train, y_test = train_test_split(
         X, Y, test_size=0.3, random_state=101)
     # Run the Classifier you want here
-    Perceptron.Perceptron_Classifier_3_positive(X_train, y_train, X_test,
-                                                y_test)
-    Perceptron.Perceptron_Classifier_3_negative(X_train, y_train, X_test,
-                                                y_test)
+    #Perceptron.Perceptron_Classifier_3_positive(X_train, y_train, X_test, y_test)
+    #Perceptron.Perceptron_Classifier_3_negative(X_train, y_train, X_test, y_test)
+    Aboost.boost(310, 0.7, X_train, y_train, X_test, y_test)
+            
 
+        
 
 def process_json_review_csv(max_subset):
     '''

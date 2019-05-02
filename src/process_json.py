@@ -30,10 +30,10 @@ class process_json:
                 fields - which json catergory to include in csv
                 max_subset - what size of csv file
         '''
-        with open(csv_file_to_make, 'w', newline='') as fout:
+        with open(csv_file_to_make, 'w', newline='', encoding='utf8') as fout:
             count = 0
             csv_file = csv.writer(fout)
-            with open(json_filepath) as fin:
+            with open(json_filepath, encoding='utf8') as fin:
                 for line in fin:
                     line_contents = json.loads(line)
                     rows = []
