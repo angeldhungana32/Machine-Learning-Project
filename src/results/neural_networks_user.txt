@@ -1,0 +1,22 @@
+
+Star Rating 3 considered as positive
+Neural Network Accuracy: 0.90
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.77      0.27      0.40       327
+           1       0.91      0.99      0.95      2448
+
+   micro avg       0.90      0.90      0.90      2775
+   macro avg       0.84      0.63      0.67      2775
+weighted avg       0.89      0.90      0.88      2775
+
+Star Rating 3 considered as negative
+Neural Network Accuracy: 0.75
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.63      0.60      0.61       896
+           1       0.81      0.83      0.82      1879
+
+   micro avg       0.75      0.75      0.75      2775
+   macro avg       0.72      0.71      0.72      2775
+weighted avg       0.75      0.75      0.75      2775

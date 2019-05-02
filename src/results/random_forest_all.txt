@@ -1,0 +1,22 @@
+
+Star Rating 3 considered as positive
+Random Forest Accuracy: 0.77
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00    161541
+           1       0.77      1.00      0.87    545880
+
+   micro avg       0.77      0.77      0.77    707421
+   macro avg       0.39      0.50      0.44    707421
+weighted avg       0.60      0.77      0.67    707421
+
+Star Rating 3 considered as negative
+Random Forest Accuracy: 0.66
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00    239826
+           1       0.66      1.00      0.80    467595
+
+   micro avg       0.66      0.66      0.66    707421
+   macro avg       0.33      0.50      0.40    707421
+weighted avg       0.44      0.66      0.53    707421

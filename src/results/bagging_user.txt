@@ -1,0 +1,22 @@
+
+Star Rating 3 considered as positive
+Baggin Accuracy: 0.88
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00       327
+           1       0.88      1.00      0.94      2448
+
+   micro avg       0.88      0.88      0.88      2775
+   macro avg       0.44      0.50      0.47      2775
+weighted avg       0.78      0.88      0.83      2775
+
+Star Rating 3 considered as negative
+Bagging Accuracy: 0.68
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.50      0.13      0.21       896
+           1       0.69      0.94      0.80      1879
+
+   micro avg       0.68      0.68      0.68      2775
+   macro avg       0.60      0.54      0.50      2775
+weighted avg       0.63      0.68      0.61      2775

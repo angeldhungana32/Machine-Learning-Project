@@ -1,7 +1,12 @@
 import process_json
 import vectorization
 from sklearn.model_selection import train_test_split
-import classifiers.classifier_perceptron as Perceptron
+import classifiers.classifier_neuralnetworks as NN
+import classifiers.classifier_logisticregression as LR
+import classifiers.classifier_perceptron as P
+import classifiers.classifier_randomforest as RF
+import classifiers.classifier_stochasticgd as SGD
+import classifiers.classifier_bagging as BG
 import read_csv
 import plot_basic_info_of_data
 import scipy
@@ -31,12 +36,28 @@ def main():
     print("Transform bag of words to Vectorized Matrix")
     process_vectorization()
 
-    X = open_pickle("top_reviewers/top_reviewers_x.pickle")
-    Y = open_pickle("top_reviewers/top_reviewers_y.pickle")
+    X = open_pickle("top_reviewers/topreviewers_x.pickle")
+    Y = open_pickle("top_reviewers/topreviewers_y.pickle")
     X_train, X_test, y_train, y_test = train_test_split(
         X, Y, test_size=0.3, random_state=101)
 
     # Run any classifier you want
+    print("Running Classifiers")
+    run_classifiers(X_train, X_test, y_train, y_test)
+
+
+def run_classifiers(X_train, X_test, y_train, y_test):
+    LR.Logistic_Regression("results/logistic_regression_user.txt", X_train,
+                           y_train, X_test, y_test)
+    P._Perceptron("results/perceptron_user.txt", X_train, y_train, X_test,
+                  y_test)
+    NN.Neural_Network("results/neural_networks_user.txt", X_train, y_train,
+                      X_test, y_test)
+    RF.Random_Forest("results/random_forest_user.txt", X_train, y_train,
+                     X_test, y_test)
+    SGD.Stochastic_Gradient_Descent("results/stochastic_gradient_user.txt",
+                                    X_train, y_train, X_test, y_test)
+    BG._Bagging("results/bagging_user.txt", X_train, y_train, X_test, y_test)
 
 
 def process_json_user_review(num_of_users, fields):
@@ -68,7 +89,8 @@ def process_vectorization():
     '''
     file_name = "top_reviewers/topreviewers.csv"
     X_y_data = read_csv.read_csv_file(file_name)
-    plot_basic_info_of_data.plt_info(X_y_data[1], "top_reviewers/stars.pdf")
+    plot_basic_info_of_data.plt_info(X_y_data[1], "Ratings Chart Top Users",
+                                     "top_reviewers/stars_users.pdf")
     vec = vectorization.Vectorization()
     x_name = "top_reviewers/topreviewers_x.pickle"
     y_name = "top_reviewers/topreviewers_y.pickle"

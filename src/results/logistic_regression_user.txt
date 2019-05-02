@@ -1,0 +1,21 @@
+Star Rating 3 considered as positive
+Logistic Regression Accuracy: 0.89
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.58      0.37      0.45       327
+           1       0.92      0.96      0.94      2448
+
+   micro avg       0.89      0.89      0.89      2775
+   macro avg       0.75      0.67      0.70      2775
+weighted avg       0.88      0.89      0.88      2775
+
+Star Rating 3 considered as negative
+Logistic Regression Accuracy: 0.76
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.64      0.60      0.62       896
+           1       0.82      0.84      0.83      1879
+
+   micro avg       0.76      0.76      0.76      2775
+   macro avg       0.73      0.72      0.73      2775
+weighted avg       0.76      0.76      0.76      2775

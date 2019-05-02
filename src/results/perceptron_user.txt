@@ -1,0 +1,22 @@
+
+Star Rating 3 considered as positive
+Perceptron Accuracy: 0.87
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.46      0.44      0.45       327
+           1       0.93      0.93      0.93      2448
+
+   micro avg       0.87      0.87      0.87      2775
+   macro avg       0.70      0.69      0.69      2775
+weighted avg       0.87      0.87      0.87      2775
+
+Star Rating 3 considered as negative
+Perceptron Accuracy: 0.74
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.61      0.57      0.59       896
+           1       0.80      0.82      0.81      1879
+
+   micro avg       0.74      0.74      0.74      2775
+   macro avg       0.70      0.70      0.70      2775
+weighted avg       0.74      0.74      0.74      2775

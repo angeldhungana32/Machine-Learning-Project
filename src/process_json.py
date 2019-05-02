@@ -33,7 +33,7 @@ class process_json:
         with open(csv_file_to_make, 'w', newline='', encoding='utf8') as fout:
             count = 0
             csv_file = csv.writer(fout)
-            with open(json_filepath, encoding='utf8') as fin:
+            with open(json_filepath) as fin:
                 for line in fin:
                     line_contents = json.loads(line)
                     rows = []
@@ -101,7 +101,7 @@ class process_json:
         fout = open(name, 'w', newline='')
         csv_file = csv.writer(fout)
         count = 0
-        with open(json_filepath) as fin:
+        with open(json_filepath, encoding='utf8') as fin:
             for line in fin:
                 line_contents = json.loads(line)
                 rows = []
@@ -141,6 +141,3 @@ class process_json:
             if word.lower() not in stopwords.words('english')
         ]
         return " ".join(lower_rmstpwords)
-        #lemm = WordNetLemmatizer()
-        #stem = " ".join([lemm.lemmatize(i) for i in lower_rmstpwords])
-        #return stem

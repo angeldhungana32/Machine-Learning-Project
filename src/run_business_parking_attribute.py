@@ -3,9 +3,17 @@ import csv
 from tqdm import tqdm
 import sys
 import scipy
+import plot_basic_info_of_data
 from sklearn.model_selection import train_test_split
-import classifiers.classifier_perceptron as Perceptron
+import classifiers.classifier_neuralnetworks as NN
+import classifiers.classifier_logisticregression as LR
+import classifiers.classifier_perceptron as P
+import classifiers.classifier_randomforest as RF
+import classifiers.classifier_stochasticgd as SGD
+import classifiers.classifier_bagging as BG
 import numpy as np
+import copy
+import math
 '''
     Get the parking data and make a matrix of it.
 '''
@@ -20,16 +28,28 @@ def main():
         for each_row in readCSV:
             Y.append(each_row[0])
             X.append(each_row[2:])
+    #X, Y = remove(X, Y)
     X = np.array(X)
     Y = np.array(Y)
     X = X.astype(np.float)
     Y = Y.astype(np.float)
+    Y = Y.astype(np.int)
+    get_count_and_plot(Y)
     X_train, X_test, y_train, y_test = train_test_split(
-        X, Y, test_size=0.3, random_state=101)
-    Perceptron.Perceptron_Classifier_3_positive(X_train, y_train, X_test,
-                                                y_test)
-    Perceptron.Perceptron_Classifier_3_negative(X_train, y_train, X_test,
-                                                y_test)
+        X, Y, test_size=0.4, random_state=101, shuffle=True)
+    print("Running Classifiers")
+    LR.Logistic_Regression("results/logistic_regression_business.txt", X_train,
+                           y_train, X_test, y_test)
+    NN.Neural_Network("results/neural_networks_business.txt", X_train, y_train,
+                      X_test, y_test)
+    RF.Random_Forest("results/random_forest_business.txt", X_train, y_train,
+                     X_test, y_test)
+    SGD.Stochastic_Gradient_Descent("results/stochastic_gradient_business.txt",
+                                    X_train, y_train, X_test, y_test)
+    BG._Bagging("results/bagging_business.txt", X_train, y_train, X_test,
+                y_test)
+    P._Perceptron("results/perceptron_business.txt", X_train, y_train, X_test,
+                  y_test)
 
 
 def parse_business_parking_data():
@@ -97,6 +117,31 @@ def get_attr_res(information):
             value = False
         dictionary_attr[key.strip('\'')] = value
     return dictionary_attr
+
+
+def remove(X, Y):
+    '''
+        Only includes available datat 
+    '''
+    XX = []
+    YY = []
+    for i in range(len(X)):
+        if X[i][0] != '-1':
+            XX.append(X[i])
+            YY.append(Y[i])
+    return XX, YY
+
+
+def get_count_and_plot(y_data):
+    '''
+        Get the rating based on 
+    '''
+    ratings = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+    for y in y_data:
+        ratings[int(round(y))] += 1
+    stars = [ratings[1], ratings[2], ratings[3], ratings[4], ratings[5]]
+    plot_basic_info_of_data.plt_stars(stars, "Ratings Chart Business Parking",
+                                      "business_parking/stars.pdf")
 
 
 if __name__ == "__main__":

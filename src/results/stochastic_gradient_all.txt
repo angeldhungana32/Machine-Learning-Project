@@ -1,0 +1,22 @@
+
+Star Rating 3 considered as positive
+Stochastic Gradient Descent Accuracy: 0.93
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.87      0.80      0.83    161541
+           1       0.94      0.97      0.95    545880
+
+   micro avg       0.93      0.93      0.93    707421
+   macro avg       0.91      0.88      0.89    707421
+weighted avg       0.93      0.93      0.93    707421
+
+Star Rating 3 considered as negative
+Stochastic Gradient Descent Accuracy: 0.90
+Classification Report:              precision    recall  f1-score   support
+
+          -1       0.89      0.82      0.85    239826
+           1       0.91      0.95      0.93    467595
+
+   micro avg       0.90      0.90      0.90    707421
+   macro avg       0.90      0.88      0.89    707421
+weighted avg       0.90      0.90      0.90    707421

@@ -3,7 +3,7 @@ import read_csv
 import numpy as np
 
 
-def plt_info(Y, file_name):
+def plt_info(Y, title, file_name):
     '''
         Reads the dataset and plots graphs classifying negative and positive reviews
         Also, plots the graph of ratings
@@ -16,14 +16,10 @@ def plt_info(Y, file_name):
             dict_of_stars[y_da] += 1
         else:
             dict_of_stars[y_da] = 1
-    #positive_reviews1, negative_reviews1 = get_pos_neg(dict_of_stars, False)
-    #positive_reviews2, negative_reviews2 = get_pos_neg(dict_of_stars, True)
-    #plt_pos_neg_no_3(positive_reviews1, negative_reviews1)
-    #plt_pos_neg_3(positive_reviews2, negative_reviews2)
     plt_stars([
         dict_of_stars["1.0"], dict_of_stars["2.0"], dict_of_stars["3.0"],
         dict_of_stars["4.0"], dict_of_stars["5.0"]
-    ], file_name)
+    ], title, file_name)
 
 
 def get_pos_neg(dict_of_stars, is_three_positive):
@@ -73,20 +69,20 @@ def plt_pos_neg_3(pos, neg):
     plt.close()
 
 
-def plt_stars(stars, file_name):
+def plt_stars(stars, title, file_name):
     '''
         Plots the star ratings 
-        Bar graph
+        Pie Chart
     '''
-    label = ["1", "2", "3", "4", "5"]
-    index = np.arange(len(label))
-    bar_list = plt.bar(index, stars)
+    labels = ["1", "2", "3", "4", "5"]
     colors = ['chocolate', 'firebrick', 'yellowgreen', 'teal', 'slategray']
-    for i in range(len(bar_list)):
-        bar_list[i].set_color(colors[i])
-    plt.xlabel("Ratings", fontsize=10)
-    plt.ylabel("Counts", fontsize=10)
-    plt.xticks(index, label, fontsize=10, rotation=30)
-    plt.title('Ratings Count')
+    explode = (0.1, 0.1, 0.1, 0, 0)
+    plt.pie(
+        stars,
+        explode=explode,
+        labels=labels,
+        colors=colors,
+        autopct='%1.1f%%')
+    plt.title(title)
     plt.savefig(file_name, bbox_inches='tight')
     plt.close()

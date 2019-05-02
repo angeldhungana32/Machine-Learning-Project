@@ -2,6 +2,9 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn import datasets
 from sklearn import metrics
 import datetime
+'''
+    Runs the Ada boost classifier with various parameters
+'''
 
 
 def process_Y1(y_):
@@ -13,6 +16,7 @@ def process_Y1(y_):
         if float(y_[i]) < 3.0: newY.append(-1)
         else: newY.append(1)
     return newY
+
 
 def boost(e, l, X_train, y_train, X_test, y_test):
     """ Make the adaboost and run it printing results
