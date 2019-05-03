@@ -34,7 +34,7 @@ The objective is to use machine learning algorithms on some real data set, with 
         - &gt;= 3 positive else negative
 - We run various classifiers located in **classifiers folder** and store the Classification Report in **results folder**
     - This is done in run_all_review_classifier.py file.
-    - This also includes testing the adaboost classifer various parameter 
+    - **This also includes testing the adaboost classifer using various parameter**
 
 **Top Users**
 - Reads through the users.json file from Yelp Data Set and gets top N users based on their review count.
